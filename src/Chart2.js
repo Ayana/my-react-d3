@@ -3,16 +3,17 @@ import * as d3 from 'd3'
 
 const BarChart = (props) => {
 	const { data, w, h, color } = props
-
 	const chartRef = useRef()
+
 	useEffect(() => {
-		drawChart()
-	})
+		const svg = d3.select(chartRef.current)
 
-	function drawChart() {
-		const accessToRef = d3.select(chartRef.current).append('svg').attr('width', w).attr('height', h).style('background', '#fff').style('padding', '20')
-
-		accessToRef
+		svg
+			.append('svg')
+			.attr('width', w)
+			.attr('height', h)
+			.style('background', '#fff')
+			.style('padding', '20')
 			.selectAll('rect')
 			.data(data)
 			.enter()
@@ -22,7 +23,23 @@ const BarChart = (props) => {
 			.attr('width', 50)
 			.attr('height', (d, i) => 10 * d)
 			.attr('fill', color)
-	}
+		// drawChart()
+	}, [])
+
+	// function drawChart() {
+	// 	const accessToRef = d3.select(chartRef.current).append('svg').attr('width', w).attr('height', h).style('background', '#fff').style('padding', '20')
+
+	// 	accessToRef
+	// 		.selectAll('rect')
+	// 		.data(data)
+	// 		.enter()
+	// 		.append('rect')
+	// 		.attr('x', (d, i) => i * 65)
+	// 		.attr('y', (d, i) => h - 10 * d)
+	// 		.attr('width', 50)
+	// 		.attr('height', (d, i) => 10 * d)
+	// 		.attr('fill', color)
+	// }
 
 	return <div ref={chartRef}></div>
 }
