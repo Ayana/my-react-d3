@@ -6,23 +6,33 @@ const BarChart = (props) => {
 	const chartRef = useRef()
 
 	useEffect(() => {
-		const svg = d3.select(chartRef.current)
+		for (let index = 0; index < 5; index++) {
+			console.log(index)
+		}
+
+		const svg = d3.select(chartRef.current).append('svg').attr('width', w).attr('height', h).style('background', '#fff').style('padding', '20')
 
 		svg
-			.append('svg')
-			.attr('width', w)
-			.attr('height', h)
-			.style('background', '#fff')
-			.style('padding', '20')
-			.selectAll('rect')
+			.selectAll('circle')
 			.data(data)
 			.enter()
-			.append('rect')
-			.attr('x', (d, i) => i * 65)
-			.attr('y', (d, i) => h - 10 * d)
-			.attr('width', 50)
-			.attr('height', (d, i) => 10 * d)
+			.append('circle')
+			// .join('circle')
+			.attr('r', 10)
 			.attr('fill', color)
+			.attr('cx', (d, i) => i * 55 + 20)
+			.attr('cy', (d, i) => h - 10 * d)
+
+		// svg
+		// 	.selectAll('rect')
+		// 	.data(data)
+		// 	.enter()
+		// 	.append('rect')
+		// 	.attr('x', (d, i) => i * 65)
+		// 	.attr('y', (d, i) => h - 10 * d)
+		// 	.attr('width', 50)
+		// 	.attr('height', (d, i) => 10 * d)
+		// 	.attr('fill', color)
 		// drawChart()
 	}, [])
 
