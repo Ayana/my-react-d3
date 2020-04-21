@@ -22,6 +22,15 @@ const BarChart = (props) => {
 			.attr('fill', color)
 			.attr('cx', (d, i) => i * 55 + 20)
 			.attr('cy', (d, i) => h - 10 * d)
+			.attr('transform', function (d, i) {
+				return 'translate(70,' + (i * 5 + 10) + ')'
+			})
+			.text((d) => d)
+		// .text(function (d) {
+		// 	return d
+		// })
+
+		// d => Data, i => Index!!!!
 
 		// svg
 		// 	.selectAll('rect')
