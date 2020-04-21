@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Barlow:600,400|&display=swap');
+
+body {
+	background: #f8f8f8;
+	font-family: 'Lato', sans-serif;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+}
+.container {
+	max-width: 800px;
+	margin: auto;
+}
+.chart__item {
+	margin-bottom: 2rem;
+}
